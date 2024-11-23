@@ -37,7 +37,7 @@ def dm_small_arr(arr):
 def find_range_max(arr):
     max = 0
     count = 0
-    while (count<255):
+    while (count<256):
         if (arr[count]>max):
             max = arr[count]
         count+=1
@@ -47,7 +47,7 @@ def find_range_max(arr):
 def find_range_min(arr):
     min = 0
     count = 0
-    while (count<255):
+    while (count<256):
         if (arr[count]<min):
             min = arr[count]
         count+=1
@@ -78,8 +78,37 @@ def channel2rgb_arr(arr1, arr2, arr3):
         row_3d = [None] * dm_size(arr1[i])
         
         for j in range(dm_size(arr1[i])):
-            row_3d[j] = [arr1[i][j], arr2[i][j], arr3[i][j]]
+            row_3d[j] = [int(arr1[i][j]), int(arr2[i][j]), int(arr3[i][j])]
+            #if (arr1[i][j]>255):
+            #    print('fuck1',row_3d[j])
+            #if (arr2[i][j]>255):
+            #    print('fuck2')
+            #if (arr3[i][j]>255):
+            #    print('fuck3')
 
         newarr[i] = row_3d
     
     return newarr
+
+#============加分題新增小工具
+def getmax_3channel(r,g,b):
+    
+    rnum = r
+    
+    if (rnum < g):
+        rnum = g
+    if (rnum < b):
+        rnum = b
+    
+    return rnum
+
+def getmin_3channel(r,g,b):
+    
+    rnum = r
+    
+    if (rnum > g):
+        rnum = g
+    if (rnum > b):
+        rnum = b
+        
+    return rnum
